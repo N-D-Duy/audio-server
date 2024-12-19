@@ -1,0 +1,12 @@
+services:
+  server:
+    build: .
+    image: duynguyen03/audio-server:v2
+    container_name: audio-server
+    ports:
+      - "9876:9876"
+    networks:
+      - server-network
+networks:
+  server-network:
+    driver: bridge

@@ -8,6 +8,7 @@ WORKDIR /app
 COPY build.gradle settings.gradle ./
 COPY src ./src
 
+
 # Build dự án với ShadowJar
 RUN gradle clean shadowJar -x test
 
@@ -20,9 +21,15 @@ WORKDIR /app
 # Sao chép file JAR từ giai đoạn builder
 COPY --from=builder /app/build/libs/*.jar app.jar
 
+RUN mkdir /app/logs
+RUN chmod 777 /app/logs
+
 # Sao chép file run.sh vào container
 COPY run.sh ./run.sh
 RUN chmod +x ./run.sh
+
+COPY config.properties ./config.properties
+
 
 # Thêm người dùng không phải root để bảo mật (tùy chọn)
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
