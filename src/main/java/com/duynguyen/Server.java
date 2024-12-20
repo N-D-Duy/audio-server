@@ -1,22 +1,21 @@
 package com.duynguyen;
 
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Set;
+import java.util.concurrent.*;
 
 public class Server {
     private static final BlockingQueue<byte[]> audioDataQueue = new LinkedBlockingQueue<>();
+    private static final ExecutorService threadPool = Executors.newFixedThreadPool(10);
+    private static final ConcurrentHashMap<Socket, Boolean> activeClients = new ConcurrentHashMap<>();
 
     public static boolean init() {
         Log.info("Server is initializing...");
-
-        Thread collectThread = new Thread(new Collect());
-        collectThread.start();
-
-        Thread senderThread = new Thread(new Sender());
-        senderThread.start();
+        threadPool.execute(new Collect());
+        threadPool.execute(new Sender());
 
         return true;
     }
@@ -24,22 +23,54 @@ public class Server {
     static class Collect implements Runnable {
         @Override
         public void run() {
-            try (DatagramSocket socket = new DatagramSocket(Config.port)) {
-                byte[] buffer = new byte[1024];
+            try (ServerSocket serverSocket = new ServerSocket(Config.port)) {
                 Log.info("Collecting audio data...");
 
                 while (true) {
-                    DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
-                    socket.receive(packet);
-
-                    if(audioDataQueue.offer(packet.getData())){
-                        Log.info("Received audio data");
-                    } else {
-                        Log.error("Failed to add audio data to queue");
+                    try {
+                        Socket clientSocket = serverSocket.accept();
+                        Log.info("Client connected: " + clientSocket.getRemoteSocketAddress());
+                        Log.info("Active clients: " + getActiveClientCount());
+                        threadPool.execute(() -> handleClient(clientSocket));
+                    } catch (Exception e) {
+                        Log.error("Error accepting client connection: " + e.getMessage());
                     }
                 }
             } catch (Exception e) {
                 Log.error("Error in Collect: " + e.getMessage());
+            }
+        }
+
+        private void handleClient(Socket clientSocket) {
+            try {
+                activeClients.put(clientSocket, true);
+
+                try (InputStream inputStream = clientSocket.getInputStream()) {
+                    byte[] buffer = new byte[1024];
+                    int bytesRead;
+
+                    while ((bytesRead = inputStream.read(buffer)) != -1) {
+                        byte[] audioData = new byte[bytesRead];
+                        System.arraycopy(buffer, 0, audioData, 0, bytesRead);
+                        if (audioDataQueue.offer(audioData)) {
+                            Log.info("Received audio data from " +
+                                    clientSocket.getRemoteSocketAddress() +
+                                    " of size: " + bytesRead);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                Log.error("Error handling client " +
+                        clientSocket.getRemoteSocketAddress() +
+                        ": " + e.getMessage());
+            } finally {
+                activeClients.remove(clientSocket);
+                try {
+                    clientSocket.close();
+                    Log.info("Client disconnected: " + clientSocket.getRemoteSocketAddress());
+                } catch (Exception e) {
+                    Log.error("Error closing client socket: " + e.getMessage());
+                }
             }
         }
     }
@@ -47,19 +78,27 @@ public class Server {
     static class Sender implements Runnable {
         @Override
         public void run() {
-            try (DatagramSocket socket = new DatagramSocket()) {
+            try (Socket socket = new Socket(Config.esp32Ip, Config.esp32Port)) {
                 Log.info("Sending audio data...");
+                OutputStream outputStream = socket.getOutputStream();
 
                 while (true) {
                     byte[] audioData = audioDataQueue.take();
-                    InetAddress address = InetAddress.getByName(Config.esp32Ip);
-                    DatagramPacket packet = new DatagramPacket(audioData, audioData.length, address, Config.esp32Port);
-                    socket.send(packet);
+                    outputStream.write(audioData);
+                    outputStream.flush();
                     Log.info("Sent audio data");
                 }
             } catch (Exception e) {
                 Log.error("Error in Sender: " + e.getMessage());
             }
         }
+    }
+
+    public static int getActiveClientCount() {
+        return activeClients.size();
+    }
+
+    public static Set<Socket> getActiveClients() {
+        return activeClients.keySet();
     }
 }

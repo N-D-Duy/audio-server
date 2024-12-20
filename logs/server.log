@@ -20,3 +20,64 @@
 [2024-12-19 08:32:01 INFO  (main)] - Server is running...
 [2024-12-19 08:32:01 INFO  (Thread-1)] - Sending audio data...
 [2024-12-19 08:32:01 INFO  (Thread-0)] - Collecting audio data...
+[2024-12-20 15:53:29 INFO  (main)] - esp32.port: 9876
+[2024-12-20 15:53:29 INFO  (main)] - server.port: 9876
+[2024-12-20 15:53:29 INFO  (main)] - esp32.ip: 192.168.1.1
+[2024-12-20 15:53:29 INFO  (main)] - Server is initializing...
+[2024-12-20 15:53:29 INFO  (main)] - Server is running...
+[2024-12-20 15:53:29 INFO  (Thread-0)] - Collecting audio data...
+[2024-12-20 15:53:29 ERROR (Thread-1)] - Error in Sender: Connection refused
+[2024-12-20 15:54:14 INFO  (Thread-0)] - Client connected: /127.0.0.1:58856
+[2024-12-20 15:54:14 INFO  (Thread-0)] - Received audio data
+[2024-12-20 15:57:42 INFO  (main)] - esp32.port: 9876
+[2024-12-20 15:57:42 INFO  (main)] - server.port: 9876
+[2024-12-20 15:57:42 INFO  (main)] - esp32.ip: 192.168.1.1
+[2024-12-20 15:57:42 INFO  (main)] - Server is initializing...
+[2024-12-20 15:57:42 INFO  (main)] - Server is running...
+[2024-12-20 15:57:42 INFO  (Thread-0)] - Collecting audio data on port 9876...
+[2024-12-20 15:57:42 ERROR (Thread-1)] - Error in Sender: Connection refused
+[2024-12-20 15:57:50 INFO  (Thread-0)] - Client connected: /127.0.0.1:49786
+[2024-12-20 15:57:50 INFO  (Thread-2)] - Received audio data of size: 13
+[2024-12-20 15:58:25 INFO  (Thread-0)] - Client connected: /127.0.0.1:33336
+[2024-12-20 15:58:25 INFO  (Thread-3)] - Received audio data of size: 13
+[2024-12-20 16:01:38 INFO  (main)] - esp32.port: 9876
+[2024-12-20 16:01:38 INFO  (main)] - server.port: 9876
+[2024-12-20 16:01:38 INFO  (main)] - esp32.ip: 192.168.1.1
+[2024-12-20 16:01:38 INFO  (main)] - Server is initializing...
+[2024-12-20 16:01:38 INFO  (main)] - Server is running...
+[2024-12-20 16:01:38 INFO  (Thread-0)] - Collecting audio data on port 9876...
+[2024-12-20 16:01:38 ERROR (Thread-1)] - Error in Sender: Connection refused
+[2024-12-20 16:02:43 INFO  (Thread-0)] - Client connected: /127.0.0.1:41946
+[2024-12-20 16:02:43 INFO  (Thread-2)] - Received audio data of size: 13
+[2024-12-20 16:03:31 INFO  (Thread-0)] - Client connected: /127.0.0.1:37236
+[2024-12-20 16:03:36 INFO  (Thread-3)] - Received audio data of size: 4
+[2024-12-20 16:03:39 INFO  (Thread-3)] - Received audio data of size: 8
+[2024-12-20 16:03:42 INFO  (Thread-3)] - Received audio data of size: 7
+[2024-12-20 16:04:04 INFO  (Thread-0)] - Client connected: /127.0.0.1:42928
+[2024-12-20 16:04:35 INFO  (Thread-4)] - Received audio data of size: 4
+[2024-12-20 16:05:07 INFO  (Thread-0)] - Client connected: /127.0.0.1:59310
+[2024-12-20 16:05:11 INFO  (Thread-5)] - Received audio data of size: 8
+[2024-12-20 16:06:42 INFO  (main)] - esp32.port: 9876
+[2024-12-20 16:06:42 INFO  (main)] - server.port: 9876
+[2024-12-20 16:06:42 INFO  (main)] - esp32.ip: 192.168.1.1
+[2024-12-20 16:06:42 INFO  (main)] - Server is initializing...
+[2024-12-20 16:06:42 INFO  (main)] - Server is running...
+[2024-12-20 16:06:42 INFO  (pool-2-thread-1)] - Collecting audio data...
+[2024-12-20 16:06:42 ERROR (pool-2-thread-2)] - Error in Sender: Connection refused
+[2024-12-20 16:06:49 INFO  (pool-2-thread-1)] - Client connected: /127.0.0.1:36380
+[2024-12-20 16:06:52 INFO  (pool-2-thread-3)] - Received audio data of size: 8
+[2024-12-20 16:06:59 INFO  (pool-2-thread-3)] - Received audio data of size: 4
+[2024-12-20 16:07:02 INFO  (pool-2-thread-3)] - Received audio data of size: 4
+[2024-12-20 16:07:17 INFO  (pool-2-thread-1)] - Client connected: /127.0.0.1:56104
+[2024-12-20 16:07:29 INFO  (pool-2-thread-4)] - Received audio data of size: 8
+[2024-12-20 16:14:20 INFO  (main)] - esp32.port: 9876
+[2024-12-20 16:14:20 INFO  (main)] - server.port: 9876
+[2024-12-20 16:14:20 INFO  (main)] - esp32.ip: 192.168.1.1
+[2024-12-20 16:14:20 INFO  (main)] - Server is initializing...
+[2024-12-20 16:14:20 INFO  (main)] - Server is running...
+[2024-12-20 16:14:20 INFO  (pool-2-thread-1)] - Collecting audio data...
+[2024-12-20 16:14:20 ERROR (pool-2-thread-2)] - Error in Sender: Connection refused
+[2024-12-20 16:14:29 INFO  (pool-2-thread-1)] - Client connected: /127.0.0.1:47674
+[2024-12-20 16:14:32 INFO  (pool-2-thread-3)] - Received audio data from /127.0.0.1:47674 of size: 7
+[2024-12-20 16:14:37 INFO  (pool-2-thread-3)] - Client disconnected: /127.0.0.1:47674
+[2024-12-20 16:14:37 INFO  (pool-2-thread-3)] - Active clients: 0
