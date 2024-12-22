@@ -81,3 +81,56 @@
 [2024-12-20 16:14:32 INFO  (pool-2-thread-3)] - Received audio data from /127.0.0.1:47674 of size: 7
 [2024-12-20 16:14:37 INFO  (pool-2-thread-3)] - Client disconnected: /127.0.0.1:47674
 [2024-12-20 16:14:37 INFO  (pool-2-thread-3)] - Active clients: 0
+[2024-12-22 20:14:44 INFO  (main)] - websocket.port: 8020
+[2024-12-22 20:14:44 INFO  (main)] - esp32.port: 9876
+[2024-12-22 20:14:44 INFO  (main)] - server.port: 9876
+[2024-12-22 20:14:44 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-22 20:14:44 INFO  (main)] - esp32.ip: 192.168.1.1
+[2024-12-22 20:14:44 INFO  (main)] - Server is initializing...
+[2024-12-22 20:14:44 INFO  (main)] - Server is running...
+[2024-12-22 20:14:44 ERROR (pool-2-thread-1)] - Error in Collect: Address already in use
+[2024-12-22 20:14:44 ERROR (pool-2-thread-2)] - Error in Sender: Connection refused
+[2024-12-22 20:14:44 INFO  (Thread-0)] - Connect to socket server successfully!
+[2024-12-22 20:17:34 INFO  (main)] - websocket.port: 8020
+[2024-12-22 20:17:34 INFO  (main)] - esp32.port: 9876
+[2024-12-22 20:17:34 INFO  (main)] - server.port: 9876
+[2024-12-22 20:17:34 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-22 20:17:34 INFO  (main)] - esp32.ip: 192.168.1.1
+[2024-12-22 20:17:34 INFO  (main)] - Server is initializing...
+[2024-12-22 20:17:34 INFO  (main)] - Server is running...
+[2024-12-22 20:17:34 ERROR (pool-2-thread-1)] - Error in Collect: Address already in use
+[2024-12-22 20:17:34 INFO  (Thread-0)] - Connect to socket server successfully!
+[2024-12-22 20:17:34 ERROR (pool-2-thread-2)] - Error in Sender: Connection refused
+[2024-12-22 20:18:13 INFO  (main)] - websocket.port: 8020
+[2024-12-22 20:18:13 INFO  (main)] - esp32.port: 9876
+[2024-12-22 20:18:13 INFO  (main)] - server.port: 9876
+[2024-12-22 20:18:13 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-22 20:18:13 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-22 20:18:13 INFO  (main)] - Server is initializing...
+[2024-12-22 20:18:13 INFO  (main)] - Server is running...
+[2024-12-22 20:18:13 ERROR (pool-2-thread-1)] - Error in Collect: Address already in use
+[2024-12-22 20:18:13 ERROR (pool-2-thread-2)] - Error in Sender: Connection refused
+[2024-12-22 20:18:13 INFO  (Thread-0)] - Connect to socket server successfully!
+[2024-12-22 20:19:43 INFO  (main)] - websocket.port: 8020
+[2024-12-22 20:19:43 INFO  (main)] - esp32.port: 9876
+[2024-12-22 20:19:43 INFO  (main)] - server.port: 9876
+[2024-12-22 20:19:43 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-22 20:19:43 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-22 20:19:43 INFO  (main)] - Server is initializing...
+[2024-12-22 20:19:43 INFO  (main)] - Server is running...
+[2024-12-22 20:19:43 ERROR (pool-2-thread-1)] - Error in Collect: Address already in use
+[2024-12-22 20:19:44 ERROR (pool-2-thread-2)] - Error in Sender: Connection refused
+[2024-12-22 20:23:13 INFO  (main)] - websocket.port: 8020
+[2024-12-22 20:23:13 INFO  (main)] - esp32.port: 9876
+[2024-12-22 20:23:13 INFO  (main)] - server.port: 9876
+[2024-12-22 20:23:13 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-22 20:23:13 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-22 20:23:13 INFO  (main)] - Server is initializing...
+[2024-12-22 20:23:13 INFO  (main)] - Server is running...
+[2024-12-22 20:23:13 INFO  (pool-2-thread-1)] - Collecting audio data...
+[2024-12-22 20:23:13 INFO  (Thread-0)] - Connect to socket server successfully!
+[2024-12-22 20:23:13 ERROR (pool-2-thread-2)] - Error in Sender: Connection refused
+[2024-12-22 20:24:17 INFO  (pool-2-thread-1)] - Client connected: /127.0.0.1:48914
+[2024-12-22 20:24:17 INFO  (pool-2-thread-3)] - Active clients: 1
+[2024-12-22 20:24:19 INFO  (pool-2-thread-3)] - Received audio data from /127.0.0.1:48914 of size: 4
+[2024-12-22 20:24:36 INFO  (pool-2-thread-3)] - Client disconnected: /127.0.0.1:48914

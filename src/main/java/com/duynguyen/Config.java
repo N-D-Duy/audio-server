@@ -8,6 +8,8 @@ public class Config {
     public static int port;
     public static String esp32Ip;
     public static int esp32Port;
+    public static int socketPort;
+    public static String socketHost;
 
 
     public static boolean load() {
@@ -18,6 +20,8 @@ public class Config {
             port = Integer.parseInt(prop.getProperty("server.port"));
             esp32Ip = prop.getProperty("esp32.ip");
             esp32Port = Integer.parseInt(prop.getProperty("esp32.port"));
+            socketPort = Integer.parseInt(prop.getProperty("websocket.port"));
+            socketHost = prop.getProperty("websocket.host");
 
             for (String key : prop.stringPropertyNames()) {
                 Log.info(key + ": " + prop.getProperty(key));

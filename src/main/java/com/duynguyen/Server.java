@@ -13,6 +13,7 @@ public class Server {
     private static final ConcurrentHashMap<Socket, Boolean> activeClients = new ConcurrentHashMap<>();
 
     public static boolean init() {
+        SocketIO.init();
         Log.info("Server is initializing...");
         threadPool.execute(new Collect());
         threadPool.execute(new Sender());
