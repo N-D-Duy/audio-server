@@ -8,12 +8,13 @@ import java.util.Set;
 import java.util.concurrent.*;
 
 public class Server {
-    private static final BlockingQueue<byte[]> audioDataQueue = new LinkedBlockingQueue<>();
+    public static final BlockingQueue<byte[]> audioDataQueue = new LinkedBlockingQueue<>();
     private static final ExecutorService threadPool = Executors.newFixedThreadPool(10);
-    private static final ConcurrentHashMap<Socket, Boolean> activeClients = new ConcurrentHashMap<>();
+    public static final ConcurrentHashMap<Socket, Boolean> activeClients = new ConcurrentHashMap<>();
 
     public static boolean init() {
-        SocketIO.init();
+        AudioWebSocketServer wsServer = new AudioWebSocketServer(Config.socketPort);
+        wsServer.start();
         Log.info("Server is initializing...");
         threadPool.execute(new Collect());
         threadPool.execute(new Sender());

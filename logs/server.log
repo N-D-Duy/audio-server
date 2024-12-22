@@ -134,3 +134,156 @@
 [2024-12-22 20:24:17 INFO  (pool-2-thread-3)] - Active clients: 1
 [2024-12-22 20:24:19 INFO  (pool-2-thread-3)] - Received audio data from /127.0.0.1:48914 of size: 4
 [2024-12-22 20:24:36 INFO  (pool-2-thread-3)] - Client disconnected: /127.0.0.1:48914
+[2024-12-22 21:37:59 INFO  (main)] - websocket.port: 8020
+[2024-12-22 21:37:59 INFO  (main)] - esp32.port: 9876
+[2024-12-22 21:37:59 INFO  (main)] - server.port: 9876
+[2024-12-22 21:37:59 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-22 21:37:59 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-22 21:37:59 INFO  (main)] - Server is initializing...
+[2024-12-22 21:37:59 INFO  (main)] - Server is running...
+[2024-12-22 21:37:59 INFO  (pool-2-thread-1)] - Collecting audio data...
+[2024-12-22 21:37:59 INFO  (Thread-0)] - Connect to socket server successfully!
+[2024-12-22 21:37:59 ERROR (pool-2-thread-2)] - Error in Sender: Connection refused
+[2024-12-22 21:49:56 INFO  (main)] - websocket.port: 8020
+[2024-12-22 21:49:56 INFO  (main)] - esp32.port: 9876
+[2024-12-22 21:49:56 INFO  (main)] - server.port: 9876
+[2024-12-22 21:49:56 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-22 21:49:56 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-22 21:49:56 INFO  (main)] - Server is initializing...
+[2024-12-22 21:49:56 INFO  (main)] - Server is running...
+[2024-12-22 21:49:56 INFO  (pool-2-thread-1)] - Collecting audio data...
+[2024-12-22 21:49:56 INFO  (WebSocketSelector-42)] - WebSocket server started on port 8020
+[2024-12-22 21:49:56 INFO  (Thread-17)] - Connect to socket server successfully!
+[2024-12-22 21:49:56 ERROR (pool-2-thread-2)] - Error in Sender: Connection refused
+[2024-12-22 21:50:07 INFO  (WebSocketWorker-27)] - New WebSocket connection: /127.0.0.1:40910
+[2024-12-22 21:50:14 INFO  (WebSocketWorker-27)] - Received message: asdfsa
+
+[2024-12-22 21:50:19 INFO  (WebSocketWorker-27)] - Received message: asdf
+
+[2024-12-22 21:50:55 INFO  (WebSocketSelector-42)] - WebSocket closed: /127.0.0.1:40910
+[2024-12-22 21:52:02 INFO  (main)] - websocket.port: 8020
+[2024-12-22 21:52:02 INFO  (main)] - esp32.port: 9876
+[2024-12-22 21:52:02 INFO  (main)] - server.port: 9876
+[2024-12-22 21:52:02 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-22 21:52:02 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-22 21:52:02 INFO  (main)] - Server is initializing...
+[2024-12-22 21:52:02 INFO  (main)] - Server is running...
+[2024-12-22 21:52:02 INFO  (pool-2-thread-1)] - Collecting audio data...
+[2024-12-22 21:52:02 INFO  (Thread-17)] - Connect to socket server successfully!
+[2024-12-22 21:52:02 INFO  (WebSocketSelector-42)] - WebSocket server started on port 8020
+[2024-12-22 21:52:02 ERROR (pool-2-thread-2)] - Error in Sender: Connection refused
+[2024-12-22 21:52:07 INFO  (WebSocketWorker-27)] - New WebSocket connection: /127.0.0.1:34600
+[2024-12-22 21:52:07 INFO  (WebSocketWorker-27)] - Active clients: 1
+[2024-12-22 21:52:13 INFO  (WebSocketWorker-27)] - Received message: abc
+
+[2024-12-22 21:52:19 INFO  (WebSocketSelector-42)] - WebSocket closed: /127.0.0.1:34600
+[2024-12-22 21:56:41 INFO  (main)] - websocket.port: 8020
+[2024-12-22 21:56:41 INFO  (main)] - esp32.port: 9876
+[2024-12-22 21:56:41 INFO  (main)] - server.port: 9876
+[2024-12-22 21:56:41 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-22 21:56:41 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-22 21:56:41 INFO  (main)] - Server is initializing...
+[2024-12-22 21:56:41 INFO  (main)] - Server is running...
+[2024-12-22 21:56:41 INFO  (pool-2-thread-1)] - Collecting audio data...
+[2024-12-22 21:56:41 ERROR (WebSocketSelector-42)] - Shutdown due to fatal error
+java.net.BindException: Address already in use
+	at java.base/sun.nio.ch.Net.bind0(Native Method) ~[?:?]
+	at java.base/sun.nio.ch.Net.bind(Net.java:555) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:337) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:294) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:89) ~[?:?]
+	at org.java_websocket.server.WebSocketServer.doSetupSelectorAndServerThread(WebSocketServer.java:567) [Java-WebSocket-1.5.3.jar:?]
+	at org.java_websocket.server.WebSocketServer.run(WebSocketServer.java:367) [Java-WebSocket-1.5.3.jar:?]
+	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
+[2024-12-22 21:56:41 ERROR (WebSocketSelector-42)] - WebSocket error: Address already in use
+[2024-12-22 21:56:41 ERROR (pool-2-thread-2)] - Error in Sender: Connection refused
+[2024-12-22 21:56:55 INFO  (main)] - websocket.port: 8020
+[2024-12-22 21:56:55 INFO  (main)] - esp32.port: 9876
+[2024-12-22 21:56:55 INFO  (main)] - server.port: 9876
+[2024-12-22 21:56:55 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-22 21:56:55 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-22 21:56:55 INFO  (main)] - Server is initializing...
+[2024-12-22 21:56:55 INFO  (main)] - Server is running...
+[2024-12-22 21:56:55 INFO  (pool-2-thread-1)] - Collecting audio data...
+[2024-12-22 21:56:55 ERROR (WebSocketSelector-42)] - Shutdown due to fatal error
+java.net.BindException: Address already in use
+	at java.base/sun.nio.ch.Net.bind0(Native Method) ~[?:?]
+	at java.base/sun.nio.ch.Net.bind(Net.java:555) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:337) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:294) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:89) ~[?:?]
+	at org.java_websocket.server.WebSocketServer.doSetupSelectorAndServerThread(WebSocketServer.java:567) [Java-WebSocket-1.5.3.jar:?]
+	at org.java_websocket.server.WebSocketServer.run(WebSocketServer.java:367) [Java-WebSocket-1.5.3.jar:?]
+	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
+[2024-12-22 21:56:55 ERROR (WebSocketSelector-42)] - WebSocket error: Address already in use
+[2024-12-22 21:56:56 ERROR (pool-2-thread-2)] - Error in Sender: Connection refused
+[2024-12-22 21:57:20 INFO  (main)] - websocket.port: 8020
+[2024-12-22 21:57:20 INFO  (main)] - esp32.port: 9876
+[2024-12-22 21:57:20 INFO  (main)] - server.port: 9876
+[2024-12-22 21:57:20 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-22 21:57:20 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-22 21:57:20 INFO  (main)] - Server is initializing...
+[2024-12-22 21:57:20 INFO  (main)] - Server is running...
+[2024-12-22 21:57:20 ERROR (pool-2-thread-1)] - Error in Collect: Address already in use
+[2024-12-22 21:57:20 INFO  (WebSocketSelector-42)] - WebSocket server started on port 9876
+[2024-12-22 21:57:20 ERROR (pool-2-thread-2)] - Error in Sender: Connection refused
+[2024-12-22 21:57:39 INFO  (main)] - websocket.port: 8020
+[2024-12-22 21:57:39 INFO  (main)] - esp32.port: 9876
+[2024-12-22 21:57:39 INFO  (main)] - server.port: 9876
+[2024-12-22 21:57:39 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-22 21:57:39 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-22 21:57:39 INFO  (main)] - Server is initializing...
+[2024-12-22 21:57:39 INFO  (main)] - Server is running...
+[2024-12-22 21:57:39 INFO  (pool-2-thread-1)] - Collecting audio data...
+[2024-12-22 21:57:39 ERROR (WebSocketSelector-42)] - Shutdown due to fatal error
+java.net.BindException: Address already in use
+	at java.base/sun.nio.ch.Net.bind0(Native Method) ~[?:?]
+	at java.base/sun.nio.ch.Net.bind(Net.java:555) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:337) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:294) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:89) ~[?:?]
+	at org.java_websocket.server.WebSocketServer.doSetupSelectorAndServerThread(WebSocketServer.java:567) [Java-WebSocket-1.5.3.jar:?]
+	at org.java_websocket.server.WebSocketServer.run(WebSocketServer.java:367) [Java-WebSocket-1.5.3.jar:?]
+	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
+[2024-12-22 21:57:39 ERROR (WebSocketSelector-42)] - WebSocket error: Address already in use
+[2024-12-22 21:57:40 ERROR (pool-2-thread-2)] - Error in Sender: Connection refused
+[2024-12-22 21:59:24 INFO  (main)] - websocket.port: 8020
+[2024-12-22 21:59:24 INFO  (main)] - esp32.port: 9876
+[2024-12-22 21:59:24 INFO  (main)] - server.port: 9876
+[2024-12-22 21:59:24 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-22 21:59:24 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-22 21:59:24 INFO  (main)] - Server is initializing...
+[2024-12-22 21:59:24 INFO  (main)] - Server is running...
+[2024-12-22 21:59:24 INFO  (pool-2-thread-1)] - Collecting audio data...
+[2024-12-22 21:59:24 INFO  (WebSocketSelector-42)] - WebSocket server started on port 8020
+[2024-12-22 21:59:24 ERROR (pool-2-thread-2)] - Error in Sender: Connection refused
+[2024-12-22 22:00:14 INFO  (main)] - websocket.port: 8020
+[2024-12-22 22:00:14 INFO  (main)] - esp32.port: 9876
+[2024-12-22 22:00:14 INFO  (main)] - server.port: 9876
+[2024-12-22 22:00:14 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-22 22:00:14 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-22 22:00:23 INFO  (main)] - Server is initializing...
+[2024-12-22 22:00:23 INFO  (main)] - Server is running...
+[2024-12-22 22:00:23 INFO  (pool-2-thread-1)] - Collecting audio data...
+[2024-12-22 22:00:23 INFO  (WebSocketSelector-42)] - WebSocket server started on port 8020
+[2024-12-22 22:00:23 ERROR (pool-2-thread-2)] - Error in Sender: Connection refused
+[2024-12-22 22:00:34 INFO  (main)] - websocket.port: 8020
+[2024-12-22 22:00:34 INFO  (main)] - esp32.port: 9876
+[2024-12-22 22:00:34 INFO  (main)] - server.port: 9876
+[2024-12-22 22:00:34 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-22 22:00:34 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-22 22:00:38 INFO  (main)] - websocket.port: 8020
+[2024-12-22 22:00:38 INFO  (main)] - esp32.port: 9876
+[2024-12-22 22:00:38 INFO  (main)] - server.port: 9876
+[2024-12-22 22:00:38 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-22 22:00:38 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-22 22:00:38 INFO  (main)] - Server is initializing...
+[2024-12-22 22:00:38 INFO  (main)] - Server is running...
+[2024-12-22 22:00:38 INFO  (pool-2-thread-1)] - Collecting audio data...
+[2024-12-22 22:00:38 INFO  (WebSocketSelector-42)] - WebSocket server started on port 8020
+[2024-12-22 22:00:38 ERROR (pool-2-thread-2)] - Error in Sender: Connection refused
+[2024-12-22 22:01:23 INFO  (WebSocketWorker-26)] - New WebSocket connection: /127.0.0.1:37858
+[2024-12-22 22:01:23 INFO  (WebSocketWorker-26)] - Active clients: 1
+[2024-12-22 22:01:25 INFO  (WebSocketWorker-26)] - Received message: asdfas
+
+[2024-12-22 22:01:31 INFO  (WebSocketSelector-42)] - WebSocket closed: /127.0.0.1:37858
