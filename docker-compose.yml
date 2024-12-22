@@ -1,12 +1,13 @@
 services:
   server:
     build: .
-    image: duynguyen03/audio-server:v2
+    image: duynguyen03/audio-server:v3
     container_name: audio-server
     ports:
-      - "9876:9876/udp"
+      - "9876:9876"
     networks:
       - server-network
+    restart: always
 networks:
   server-network:
     driver: bridge

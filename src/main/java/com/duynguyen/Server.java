@@ -30,7 +30,6 @@ public class Server {
                     try {
                         Socket clientSocket = serverSocket.accept();
                         Log.info("Client connected: " + clientSocket.getRemoteSocketAddress());
-                        Log.info("Active clients: " + getActiveClientCount());
                         threadPool.execute(() -> handleClient(clientSocket));
                     } catch (Exception e) {
                         Log.error("Error accepting client connection: " + e.getMessage());
@@ -44,7 +43,7 @@ public class Server {
         private void handleClient(Socket clientSocket) {
             try {
                 activeClients.put(clientSocket, true);
-
+                Log.info("Active clients: " + getActiveClientCount());
                 try (InputStream inputStream = clientSocket.getInputStream()) {
                     byte[] buffer = new byte[1024];
                     int bytesRead;
