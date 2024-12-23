@@ -305,3 +305,240 @@ java.net.BindException: Address already in use
 [2024-12-23 08:47:55 INFO  (main)] - Server is running...
 [2024-12-23 08:47:55 INFO  (pool-2-thread-1)] - Collecting audio data...
 [2024-12-23 08:47:55 INFO  (WebSocketSelector-42)] - WebSocket server started on port 8020
+[2024-12-23 09:44:12 INFO  (main)] - websocket.port: 8020
+[2024-12-23 09:44:12 INFO  (main)] - esp32.port: 9876
+[2024-12-23 09:44:12 INFO  (main)] - server.port: 9876
+[2024-12-23 09:44:12 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-23 09:44:12 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-23 09:44:12 INFO  (main)] - WebSocket server started on port 8020
+[2024-12-23 09:44:12 INFO  (main)] - ESP32 server started on port 9876
+[2024-12-23 09:44:12 INFO  (main)] - Server is running...
+[2024-12-23 09:44:12 INFO  (WebSocketSelector-42)] - WebSocket server started
+[2024-12-23 09:44:41 INFO  (WebSocketWorker-26)] - Web client connected: /127.0.0.1:47782
+[2024-12-23 09:47:26 INFO  (WebSocketWorker-26)] - Received text message: ESP32
+
+[2024-12-23 09:48:49 INFO  (WebSocketSelector-42)] - Web client disconnected: /127.0.0.1:47782
+[2024-12-23 09:50:52 WARN  (pool-2-thread-1)] - Invalid ESP32 authentication
+[2024-12-23 09:51:08 INFO  (pool-2-thread-1)] - ESP32 connected: /127.0.0.1:49378
+[2024-12-23 09:54:53 INFO  (main)] - websocket.port: 8020
+[2024-12-23 09:54:53 INFO  (main)] - esp32.port: 9876
+[2024-12-23 09:54:53 INFO  (main)] - server.port: 9876
+[2024-12-23 09:54:53 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-23 09:54:53 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-23 09:54:53 INFO  (main)] - WebSocket server started on port 8020
+[2024-12-23 09:54:53 INFO  (main)] - ESP32 server started on port 9876
+[2024-12-23 09:54:53 ERROR (main)] - Error initializing server: Address already in use
+[2024-12-23 09:54:53 ERROR (main)] - Server failed to start...
+[2024-12-23 09:54:53 INFO  (WebSocketSelector-42)] - WebSocket server started
+[2024-12-23 09:55:10 INFO  (main)] - websocket.port: 8020
+[2024-12-23 09:55:10 INFO  (main)] - esp32.port: 9876
+[2024-12-23 09:55:10 INFO  (main)] - server.port: 9876
+[2024-12-23 09:55:10 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-23 09:55:10 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-23 09:55:10 INFO  (main)] - WebSocket server started on port 8020
+[2024-12-23 09:55:10 INFO  (main)] - ESP32 server started on port 9876
+[2024-12-23 09:55:10 ERROR (main)] - Error initializing server: Address already in use
+[2024-12-23 09:55:10 ERROR (main)] - Server failed to start...
+[2024-12-23 09:55:10 INFO  (WebSocketSelector-42)] - WebSocket server started
+[2024-12-23 09:59:19 INFO  (main)] - websocket.port: 8020
+[2024-12-23 09:59:19 INFO  (main)] - esp32.port: 9876
+[2024-12-23 09:59:19 INFO  (main)] - server.port: 9876
+[2024-12-23 09:59:19 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-23 09:59:19 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-23 09:59:19 INFO  (main)] - WebSocket server started on port 8020
+[2024-12-23 09:59:19 INFO  (main)] - TCP Application server started on port 9876
+[2024-12-23 09:59:19 INFO  (main)] - Server is running...
+[2024-12-23 09:59:19 INFO  (WebSocketSelector-42)] - WebSocket server started
+[2024-12-23 10:00:05 INFO  (main)] - websocket.port: 8020
+[2024-12-23 10:00:05 INFO  (main)] - esp32.port: 9876
+[2024-12-23 10:00:05 INFO  (main)] - server.port: 9876
+[2024-12-23 10:00:05 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-23 10:00:05 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-23 10:00:05 INFO  (main)] - TCP Application server started on port 9876
+[2024-12-23 10:00:05 INFO  (main)] - Server is running...
+[2024-12-23 10:00:05 INFO  (WebSocketSelector-42)] - WebSocket server started on port 8020
+[2024-12-23 10:00:25 INFO  (pool-2-thread-4)] - Application client connected: /127.0.0.1:37382
+[2024-12-23 10:00:34 INFO  (pool-2-thread-5)] - ESP32 connected: /127.0.0.1:43884
+[2024-12-23 10:01:01 INFO  (WebSocketWorker-26)] - Web client connected: /127.0.0.1:59916
+[2024-12-23 10:02:10 INFO  (main)] - websocket.port: 8020
+[2024-12-23 10:02:10 INFO  (main)] - esp32.port: 9876
+[2024-12-23 10:02:10 INFO  (main)] - server.port: 9876
+[2024-12-23 10:02:10 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-23 10:02:10 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-23 10:02:10 INFO  (main)] - TCP Application server started on port 9876
+[2024-12-23 10:02:10 INFO  (main)] - Server is running...
+[2024-12-23 10:02:10 ERROR (WebSocketSelector-42)] - Shutdown due to fatal error
+java.net.BindException: Address already in use
+	at java.base/sun.nio.ch.Net.bind0(Native Method) ~[?:?]
+	at java.base/sun.nio.ch.Net.bind(Net.java:555) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:337) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:294) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:89) ~[?:?]
+	at org.java_websocket.server.WebSocketServer.doSetupSelectorAndServerThread(WebSocketServer.java:567) [Java-WebSocket-1.5.3.jar:?]
+	at org.java_websocket.server.WebSocketServer.run(WebSocketServer.java:367) [Java-WebSocket-1.5.3.jar:?]
+	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
+[2024-12-23 10:02:10 ERROR (WebSocketSelector-42)] - WebSocket error: Address already in use
+[2024-12-23 10:02:16 INFO  (main)] - websocket.port: 8020
+[2024-12-23 10:02:16 INFO  (main)] - esp32.port: 9876
+[2024-12-23 10:02:16 INFO  (main)] - server.port: 9876
+[2024-12-23 10:02:16 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-23 10:02:16 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-23 10:02:16 INFO  (main)] - TCP Application server started on port 9876
+[2024-12-23 10:02:16 INFO  (main)] - Server is running...
+[2024-12-23 10:02:16 ERROR (WebSocketSelector-42)] - Shutdown due to fatal error
+java.net.BindException: Address already in use
+	at java.base/sun.nio.ch.Net.bind0(Native Method) ~[?:?]
+	at java.base/sun.nio.ch.Net.bind(Net.java:555) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:337) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:294) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:89) ~[?:?]
+	at org.java_websocket.server.WebSocketServer.doSetupSelectorAndServerThread(WebSocketServer.java:567) [Java-WebSocket-1.5.3.jar:?]
+	at org.java_websocket.server.WebSocketServer.run(WebSocketServer.java:367) [Java-WebSocket-1.5.3.jar:?]
+	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
+[2024-12-23 10:02:16 ERROR (WebSocketSelector-42)] - WebSocket error: Address already in use
+[2024-12-23 10:02:24 INFO  (main)] - websocket.port: 8020
+[2024-12-23 10:02:24 INFO  (main)] - esp32.port: 9876
+[2024-12-23 10:02:24 INFO  (main)] - server.port: 9876
+[2024-12-23 10:02:24 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-23 10:02:24 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-23 10:02:24 INFO  (main)] - TCP Application server started on port 9876
+[2024-12-23 10:02:24 INFO  (main)] - Server is running...
+[2024-12-23 10:02:24 ERROR (WebSocketSelector-42)] - Shutdown due to fatal error
+java.net.BindException: Address already in use
+	at java.base/sun.nio.ch.Net.bind0(Native Method) ~[?:?]
+	at java.base/sun.nio.ch.Net.bind(Net.java:555) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:337) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:294) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:89) ~[?:?]
+	at org.java_websocket.server.WebSocketServer.doSetupSelectorAndServerThread(WebSocketServer.java:567) [Java-WebSocket-1.5.3.jar:?]
+	at org.java_websocket.server.WebSocketServer.run(WebSocketServer.java:367) [Java-WebSocket-1.5.3.jar:?]
+	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
+[2024-12-23 10:02:24 ERROR (WebSocketSelector-42)] - WebSocket error: Address already in use
+[2024-12-23 10:02:40 INFO  (main)] - websocket.port: 8020
+[2024-12-23 10:02:40 INFO  (main)] - esp32.port: 9876
+[2024-12-23 10:02:40 INFO  (main)] - server.port: 9876
+[2024-12-23 10:02:40 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-23 10:02:40 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-23 10:02:40 INFO  (main)] - TCP Application server started on port 9876
+[2024-12-23 10:02:40 INFO  (main)] - Server is running...
+[2024-12-23 10:02:40 ERROR (WebSocketSelector-42)] - Shutdown due to fatal error
+java.net.BindException: Address already in use
+	at java.base/sun.nio.ch.Net.bind0(Native Method) ~[?:?]
+	at java.base/sun.nio.ch.Net.bind(Net.java:555) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.netBind(ServerSocketChannelImpl.java:337) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:294) ~[?:?]
+	at java.base/sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:89) ~[?:?]
+	at org.java_websocket.server.WebSocketServer.doSetupSelectorAndServerThread(WebSocketServer.java:567) [Java-WebSocket-1.5.3.jar:?]
+	at org.java_websocket.server.WebSocketServer.run(WebSocketServer.java:367) [Java-WebSocket-1.5.3.jar:?]
+	at java.base/java.lang.Thread.run(Thread.java:840) [?:?]
+[2024-12-23 10:02:40 ERROR (WebSocketSelector-42)] - WebSocket error: Address already in use
+[2024-12-23 10:05:31 INFO  (main)] - websocket.port: 8020
+[2024-12-23 10:05:31 INFO  (main)] - esp32.port: 9876
+[2024-12-23 10:05:31 INFO  (main)] - server.port: 9876
+[2024-12-23 10:05:31 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-23 10:05:31 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-23 10:05:31 INFO  (main)] - TCP Application server started on port 9876
+[2024-12-23 10:05:31 INFO  (main)] - Server is running...
+[2024-12-23 10:05:31 INFO  (WebSocketSelector-42)] - WebSocket server started on port 8020
+[2024-12-23 10:05:49 INFO  (pool-2-thread-4)] - Application client connected: /127.0.0.1:47368
+[2024-12-23 10:06:00 INFO  (pool-2-thread-5)] - ESP32 connected: /127.0.0.1:45136
+[2024-12-23 10:10:56 INFO  (main)] - websocket.port: 8020
+[2024-12-23 10:10:56 INFO  (main)] - esp32.port: 9876
+[2024-12-23 10:10:56 INFO  (main)] - server.port: 9876
+[2024-12-23 10:10:56 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-23 10:10:56 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-23 10:10:56 INFO  (main)] - TCP Application server started on port 9876
+[2024-12-23 10:10:56 INFO  (main)] - Server is running...
+[2024-12-23 10:10:56 INFO  (WebSocketSelector-42)] - WebSocket server started on port 8020
+[2024-12-23 10:11:07 INFO  (pool-2-thread-4)] - Application client connected: /127.0.0.1:38292
+[2024-12-23 10:11:15 INFO  (pool-2-thread-5)] - ESP32 connected: /127.0.0.1:35644
+[2024-12-23 10:11:15 INFO  (pool-2-thread-5)] - Client disconnected: /127.0.0.1:35644
+[2024-12-23 10:12:20 INFO  (pool-2-thread-4)] - Received audio data from /127.0.0.1:38292 of size: 4
+[2024-12-23 10:17:25 INFO  (pool-2-thread-4)] - Client disconnected: /127.0.0.1:38292
+[2024-12-23 10:25:00 INFO  (main)] - websocket.port: 8020
+[2024-12-23 10:25:00 INFO  (main)] - esp32.port: 9876
+[2024-12-23 10:25:00 INFO  (main)] - server.port: 9876
+[2024-12-23 10:25:00 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-23 10:25:00 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-23 10:25:00 INFO  (main)] - TCP Application server started on port 9876
+[2024-12-23 10:25:00 INFO  (main)] - Server is running...
+[2024-12-23 10:25:00 INFO  (WebSocketSelector-42)] - WebSocket server started on port 8020
+[2024-12-23 10:25:11 INFO  (pool-2-thread-4)] - ESP32 connected: /127.0.0.1:33722
+[2024-12-23 10:25:11 INFO  (pool-2-thread-4)] - Client disconnected: /127.0.0.1:33722
+[2024-12-23 10:25:25 INFO  (pool-2-thread-5)] - Application client connected: /127.0.0.1:35882
+[2024-12-23 10:25:34 INFO  (pool-2-thread-6)] - ESP32 connected: /127.0.0.1:42360
+[2024-12-23 10:25:38 INFO  (pool-2-thread-5)] - Received audio data from /127.0.0.1:35882 of size: 4
+[2024-12-23 10:25:44 INFO  (pool-2-thread-5)] - Received audio data from /127.0.0.1:35882 of size: 4
+[2024-12-23 10:25:46 INFO  (pool-2-thread-5)] - Received audio data from /127.0.0.1:35882 of size: 8
+[2024-12-23 10:25:46 INFO  (pool-2-thread-5)] - Received audio data from /127.0.0.1:35882 of size: 7
+[2024-12-23 10:25:47 INFO  (pool-2-thread-5)] - Received audio data from /127.0.0.1:35882 of size: 8
+[2024-12-23 10:25:48 INFO  (pool-2-thread-5)] - Received audio data from /127.0.0.1:35882 of size: 9
+[2024-12-23 10:25:53 INFO  (pool-2-thread-5)] - Received audio data from /127.0.0.1:35882 of size: 8
+[2024-12-23 10:25:55 INFO  (pool-2-thread-5)] - Received audio data from /127.0.0.1:35882 of size: 5
+[2024-12-23 10:25:56 INFO  (pool-2-thread-5)] - Received audio data from /127.0.0.1:35882 of size: 7
+[2024-12-23 10:25:58 INFO  (pool-2-thread-5)] - Received audio data from /127.0.0.1:35882 of size: 6
+[2024-12-23 10:26:02 INFO  (pool-2-thread-5)] - Received audio data from /127.0.0.1:35882 of size: 9
+[2024-12-23 10:26:09 INFO  (pool-2-thread-5)] - Client disconnected: /127.0.0.1:35882
+[2024-12-23 10:29:58 INFO  (main)] - websocket.port: 8020
+[2024-12-23 10:29:58 INFO  (main)] - esp32.port: 9876
+[2024-12-23 10:29:58 INFO  (main)] - server.port: 9876
+[2024-12-23 10:29:58 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-23 10:29:58 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-23 10:29:58 INFO  (main)] - TCP Application server started on port 9876
+[2024-12-23 10:29:58 INFO  (main)] - Server is running...
+[2024-12-23 10:29:58 INFO  (WebSocketSelector-42)] - WebSocket server started on port 8020
+[2024-12-23 10:30:10 WARN  (pool-2-thread-4)] - Unknown client type: asd
+[2024-12-23 10:30:36 INFO  (pool-2-thread-5)] - Application client connected: /127.0.0.1:48300
+[2024-12-23 10:30:42 INFO  (pool-2-thread-6)] - ESP32 connected: /127.0.0.1:44676
+[2024-12-23 10:31:04 INFO  (pool-2-thread-5)] - Client disconnected: /127.0.0.1:48300
+[2024-12-23 10:31:12 INFO  (pool-2-thread-7)] - ESP32 connected: /127.0.0.1:53452
+[2024-12-23 10:32:16 INFO  (main)] - websocket.port: 8020
+[2024-12-23 10:32:16 INFO  (main)] - esp32.port: 9876
+[2024-12-23 10:32:16 INFO  (main)] - server.port: 9876
+[2024-12-23 10:32:16 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-23 10:32:16 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-23 10:32:16 INFO  (main)] - TCP Application server started on port 9876
+[2024-12-23 10:32:16 INFO  (main)] - Server is running...
+[2024-12-23 10:32:16 INFO  (WebSocketSelector-42)] - WebSocket server started on port 8020
+[2024-12-23 10:33:10 INFO  (pool-2-thread-4)] - Application client connected: /127.0.0.1:46078
+[2024-12-23 10:33:14 INFO  (pool-2-thread-5)] - ESP32 connected: /127.0.0.1:46090
+[2024-12-23 10:33:47 INFO  (main)] - websocket.port: 8020
+[2024-12-23 10:33:47 INFO  (main)] - esp32.port: 9876
+[2024-12-23 10:33:47 INFO  (main)] - server.port: 9876
+[2024-12-23 10:33:47 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-23 10:33:47 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-23 10:33:47 INFO  (main)] - TCP Application server started on port 9876
+[2024-12-23 10:33:47 INFO  (main)] - Server is running...
+[2024-12-23 10:33:47 INFO  (WebSocketSelector-42)] - WebSocket server started on port 8020
+[2024-12-23 10:33:59 INFO  (pool-2-thread-3)] - ESP32 connected: /127.0.0.1:44760
+[2024-12-23 10:34:07 INFO  (pool-2-thread-4)] - Application client connected: /127.0.0.1:54802
+[2024-12-23 10:34:44 INFO  (main)] - websocket.port: 8020
+[2024-12-23 10:34:44 INFO  (main)] - esp32.port: 9876
+[2024-12-23 10:34:44 INFO  (main)] - server.port: 9876
+[2024-12-23 10:34:44 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-23 10:34:44 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-23 10:34:44 INFO  (main)] - TCP Application server started on port 9876
+[2024-12-23 10:34:44 INFO  (main)] - Server is running...
+[2024-12-23 10:34:44 INFO  (WebSocketSelector-42)] - WebSocket server started on port 8020
+[2024-12-23 10:34:58 INFO  (WebSocketWorker-26)] - Web client connected: /127.0.0.1:42708
+[2024-12-23 10:35:07 INFO  (pool-2-thread-4)] - ESP32 connected: /127.0.0.1:38192
+[2024-12-23 10:35:09 INFO  (WebSocketWorker-26)] - Received text message: abc
+
+[2024-12-23 10:36:01 INFO  (WebSocketSelector-42)] - Web client disconnected: /127.0.0.1:42708
+[2024-12-23 10:36:06 INFO  (main)] - websocket.port: 8020
+[2024-12-23 10:36:06 INFO  (main)] - esp32.port: 9876
+[2024-12-23 10:36:06 INFO  (main)] - server.port: 9876
+[2024-12-23 10:36:06 INFO  (main)] - websocket.host: ws://localhost
+[2024-12-23 10:36:06 INFO  (main)] - esp32.ip: 192.168.1.10
+[2024-12-23 10:36:06 INFO  (main)] - TCP Application server started on port 9876
+[2024-12-23 10:36:06 INFO  (main)] - Server is running...
+[2024-12-23 10:36:06 INFO  (WebSocketSelector-42)] - WebSocket server started on port 8020
+[2024-12-23 10:36:11 INFO  (WebSocketWorker-26)] - Web client connected: /127.0.0.1:55678
+[2024-12-23 10:36:15 INFO  (pool-2-thread-4)] - ESP32 connected: /127.0.0.1:33542
+[2024-12-23 10:36:18 INFO  (WebSocketWorker-26)] - Received text message: abc
+
+[2024-12-23 10:36:26 INFO  (WebSocketWorker-26)] - Received text message: xyz
+
+[2024-12-23 10:36:31 INFO  (WebSocketWorker-26)] - Received text message: asdfas
+
+[2024-12-23 10:36:33 INFO  (WebSocketSelector-42)] - Web client disconnected: /127.0.0.1:55678

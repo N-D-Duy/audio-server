@@ -9,66 +9,105 @@ import java.util.concurrent.*;
 
 public class Server {
     public static final BlockingQueue<byte[]> audioDataQueue = new LinkedBlockingQueue<>();
+    public static final BlockingQueue<byte[]> esp32Buffer = new LinkedBlockingQueue<>(1000);
     private static final ExecutorService threadPool = Executors.newFixedThreadPool(10);
     public static final ConcurrentHashMap<Socket, Boolean> activeClients = new ConcurrentHashMap<>();
 
-    public static boolean init() {
-        AudioWebSocketServer wsServer = new AudioWebSocketServer(Config.socketPort);
-        wsServer.start();
-        Log.info("Server is initializing...");
-        threadPool.execute(new Collect());
-        threadPool.execute(new Sender());
+    private static volatile Socket esp32Socket;
+    private static ServerSocket tcpServer;
+    private static final Set<Socket> tcpApplicationClients = ConcurrentHashMap.newKeySet();
 
-        return true;
+    public static boolean init() {
+        try {
+            AudioWebSocketServer wsServer = new AudioWebSocketServer(Config.socketPort);
+            wsServer.start();
+
+            tcpServer = new ServerSocket(Config.port);
+            Log.info("TCP Application server started on port " + Config.port);
+            threadPool.execute(new TCPConnectionHandler());
+
+            threadPool.execute(new ESP32DataSender());
+            threadPool.execute(new DataProcessor());
+
+            return true;
+        } catch (Exception e) {
+            Log.error("Error initializing server: " + e.getMessage());
+            return false;
+        }
     }
 
-    static class Collect implements Runnable {
+    static class TCPConnectionHandler implements Runnable {
         @Override
         public void run() {
-            try (ServerSocket serverSocket = new ServerSocket(Config.port)) {
-                Log.info("Collecting audio data...");
-
-                while (true) {
-                    try {
-                        Socket clientSocket = serverSocket.accept();
-                        Log.info("Client connected: " + clientSocket.getRemoteSocketAddress());
-                        threadPool.execute(() -> handleClient(clientSocket));
-                    } catch (Exception e) {
-                        Log.error("Error accepting client connection: " + e.getMessage());
-                    }
+            while (true) {
+                try {
+                    Socket socket = tcpServer.accept();
+                    threadPool.execute(() -> handleClient(socket));
+                } catch (Exception e) {
+                    Log.error("Error accepting connection: " + e.getMessage());
                 }
-            } catch (Exception e) {
-                Log.error("Error in Collect: " + e.getMessage());
             }
         }
 
-        private void handleClient(Socket clientSocket) {
+        private void handleClient(Socket socket) {
             try {
-                activeClients.put(clientSocket, true);
-                Log.info("Active clients: " + getActiveClientCount());
-                try (InputStream inputStream = clientSocket.getInputStream()) {
+                InputStream input = socket.getInputStream();
+                byte[] buffer = new byte[1024];
+                int read = input.read(buffer);
+                if (read == -1) {
+                    socket.close();
+                    return;
+                }
+
+                String clientType = new String(buffer, 0, read).trim();
+
+                if ("ESP32".equalsIgnoreCase(clientType)) {
+                    handleESP32Client(socket);
+                } else if ("APPLICATION".equalsIgnoreCase(clientType)) {
+                    handleApplicationClient(socket);
+                } else {
+                    Log.warn("Unknown client type: " + clientType);
+                    socket.close();
+                }
+            } catch (Exception e) {
+                Log.error("Error handling client: " + e.getMessage());
+            }
+        }
+
+        private void handleESP32Client(Socket socket) {
+            try {
+                if (esp32Socket != null) {
+                    esp32Socket.close();
+                }
+                esp32Socket = socket;
+                Log.info("ESP32 connected: " + socket.getRemoteSocketAddress());
+                activeClients.put(socket, true);
+            } catch (Exception e) {
+                Log.error("Error handling ESP32 client: " + e.getMessage());
+            }
+        }
+
+        private void handleApplicationClient(Socket socket) {
+            try {
+                Log.info("Application client connected: " + socket.getRemoteSocketAddress());
+                activeClients.put(socket, true);
+                try (InputStream inputStream = socket.getInputStream()) {
                     byte[] buffer = new byte[1024];
                     int bytesRead;
 
                     while ((bytesRead = inputStream.read(buffer)) != -1) {
                         byte[] audioData = new byte[bytesRead];
                         System.arraycopy(buffer, 0, audioData, 0, bytesRead);
-                        if (audioDataQueue.offer(audioData)) {
-                            Log.info("Received audio data from " +
-                                    clientSocket.getRemoteSocketAddress() +
-                                    " of size: " + bytesRead);
-                        }
+                        audioDataQueue.offer(audioData);
                     }
                 }
             } catch (Exception e) {
-                Log.error("Error handling client " +
-                        clientSocket.getRemoteSocketAddress() +
-                        ": " + e.getMessage());
+                Log.error("Error handling Application client: " + e.getMessage());
             } finally {
-                activeClients.remove(clientSocket);
+                activeClients.remove(socket);
                 try {
-                    clientSocket.close();
-                    Log.info("Client disconnected: " + clientSocket.getRemoteSocketAddress());
+                    socket.close();
+                    Log.info("Client disconnected: " + socket.getRemoteSocketAddress());
                 } catch (Exception e) {
                     Log.error("Error closing client socket: " + e.getMessage());
                 }
@@ -76,30 +115,49 @@ public class Server {
         }
     }
 
-    static class Sender implements Runnable {
+
+    static class DataProcessor implements Runnable {
         @Override
         public void run() {
-            try (Socket socket = new Socket(Config.esp32Ip, Config.esp32Port)) {
-                Log.info("Sending audio data...");
-                OutputStream outputStream = socket.getOutputStream();
+            while (true) {
+                try {
+                    byte[] data = audioDataQueue.take();
 
-                while (true) {
-                    byte[] audioData = audioDataQueue.take();
-                    outputStream.write(audioData);
-                    outputStream.flush();
-                    Log.info("Sent audio data");
+                    while (!esp32Buffer.offer(data)) {
+                        esp32Buffer.poll();
+                    }
+                } catch (Exception e) {
+                    Log.error("Error processing audio data: " + e.getMessage());
                 }
-            } catch (Exception e) {
-                Log.error("Error in Sender: " + e.getMessage());
             }
         }
     }
 
-    public static int getActiveClientCount() {
-        return activeClients.size();
-    }
-
-    public static Set<Socket> getActiveClients() {
-        return activeClients.keySet();
+    static class ESP32DataSender implements Runnable {
+        @Override
+        public void run() {
+            while (true) {
+                try {
+                    if (esp32Socket != null && !esp32Socket.isClosed()) {
+                        byte[] data = esp32Buffer.take();
+                        OutputStream output = esp32Socket.getOutputStream();
+                        output.write(data);
+                        output.flush();
+                    } else {
+                        Thread.sleep(100);
+                    }
+                } catch (Exception e) {
+                    Log.error("Error sending data to ESP32: " + e.getMessage());
+                    if (esp32Socket != null) {
+                        try {
+                            esp32Socket.close();
+                        } catch (Exception ex) {
+                            Log.error("Error closing failed ESP32 connection");
+                        }
+                        esp32Socket = null;
+                    }
+                }
+            }
+        }
     }
 }

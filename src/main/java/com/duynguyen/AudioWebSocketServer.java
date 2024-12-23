@@ -5,10 +5,15 @@ import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.WebSocket;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
-
-import static com.duynguyen.Server.audioDataQueue;
+import java.nio.charset.StandardCharsets;
+import java.util.Map;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class AudioWebSocketServer extends WebSocketServer {
+    private static final int BUFFER_SIZE = 4096;
+    private final Map<WebSocket, BlockingQueue<byte[]>> clientBuffers = new ConcurrentHashMap<>();
 
     public AudioWebSocketServer(int port) {
         super(new InetSocketAddress(port));
@@ -16,26 +21,34 @@ public class AudioWebSocketServer extends WebSocketServer {
 
     @Override
     public void onOpen(WebSocket conn, ClientHandshake handshake) {
-        Log.info("New WebSocket connection: " + conn.getRemoteSocketAddress());
-        Log.info("Active clients: " + getConnections().size());
+        Log.info("Web client connected: " + conn.getRemoteSocketAddress());
+        clientBuffers.put(conn, new LinkedBlockingQueue<>(BUFFER_SIZE));
     }
 
     @Override
     public void onClose(WebSocket conn, int code, String reason, boolean remote) {
-        Log.info("WebSocket closed: " + conn.getRemoteSocketAddress());
-    }
-
-    @Override
-    public void onMessage(WebSocket conn, String message) {
-        Log.info("Received message: " + message);
+        Log.info("Web client disconnected: " + conn.getRemoteSocketAddress());
+        clientBuffers.remove(conn);
     }
 
     @Override
     public void onMessage(WebSocket conn, ByteBuffer message) {
         byte[] audioData = new byte[message.remaining()];
         message.get(audioData);
-        audioDataQueue.offer(audioData);
-//        Log.info("Received audio data: " + audioData.length + " bytes");
+        Server.audioDataQueue.offer(audioData);
+
+        clientBuffers.forEach((client, buffer) -> {
+            if (client != conn && !buffer.offer(audioData)) {
+                buffer.poll();
+                buffer.offer(audioData);
+            }
+        });
+    }
+
+    @Override
+    public void onMessage(WebSocket conn, String message) {
+        Log.info("Received text message: " + message);
+        Server.audioDataQueue.offer(message.getBytes(StandardCharsets.UTF_8));
     }
 
     @Override
@@ -45,6 +58,6 @@ public class AudioWebSocketServer extends WebSocketServer {
 
     @Override
     public void onStart() {
-        Log.info("WebSocket server started on port " + getPort());
+        Log.info("WebSocket server started on port " + Config.socketPort);
     }
 }
