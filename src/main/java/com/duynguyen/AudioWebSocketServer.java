@@ -35,7 +35,7 @@ public class AudioWebSocketServer extends WebSocketServer {
         byte[] audioData = new byte[message.remaining()];
         message.get(audioData);
         audioDataQueue.offer(audioData);
-        Log.info("Received audio data: " + audioData.length + " bytes");
+//        Log.info("Received audio data: " + audioData.length + " bytes");
     }
 
     @Override
