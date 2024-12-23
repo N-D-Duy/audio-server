@@ -15,7 +15,6 @@ public class Server {
 
     private static volatile Socket esp32Socket;
     private static ServerSocket tcpServer;
-    private static final Set<Socket> tcpApplicationClients = ConcurrentHashMap.newKeySet();
 
     public static boolean init() {
         try {
@@ -23,7 +22,7 @@ public class Server {
             wsServer.start();
 
             tcpServer = new ServerSocket(Config.port);
-            Log.info("TCP Application server started on port " + Config.port);
+            Log.info("Server started on port " + Config.port);
             threadPool.execute(new TCPConnectionHandler());
 
             threadPool.execute(new ESP32DataSender());
@@ -81,6 +80,7 @@ public class Server {
                 }
                 esp32Socket = socket;
                 Log.info("ESP32 connected: " + socket.getRemoteSocketAddress());
+                audioDataQueue.clear();
                 activeClients.put(socket, true);
             } catch (Exception e) {
                 Log.error("Error handling ESP32 client: " + e.getMessage());
