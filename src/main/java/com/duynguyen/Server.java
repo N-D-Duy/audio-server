@@ -1,14 +1,14 @@
 package com.duynguyen;
 
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Arrays;
 import java.util.concurrent.*;
 
 public class Server {
-    public static final BlockingQueue<byte[]> audioDataQueue = new LinkedBlockingQueue<>();
-    public static final BlockingQueue<byte[]> esp32Buffer = new LinkedBlockingQueue<>(1000);
+    public static final BlockingQueue<short[]> audioDataQueue = new LinkedBlockingQueue<>();
+    public static final BlockingQueue<short[]> esp32Buffer = new LinkedBlockingQueue<>(1000);
     private static final ExecutorService threadPool = Executors.newFixedThreadPool(10);
     public static final ConcurrentHashMap<Socket, Boolean> activeClients = new ConcurrentHashMap<>();
 
@@ -50,7 +50,7 @@ public class Server {
         private void handleClient(Socket socket) {
             try {
                 InputStream input = socket.getInputStream();
-                byte[] buffer = new byte[4096];
+                byte[] buffer = new byte[1024];
                 int read = input.read(buffer);
                 if (read == -1) {
                     socket.close();
@@ -77,9 +77,9 @@ public class Server {
                 if (esp32Socket != null) {
                     esp32Socket.close();
                 }
+                audioDataQueue.clear();
                 esp32Socket = socket;
                 Log.info("ESP32 connected: " + socket.getRemoteSocketAddress());
-                audioDataQueue.clear();
                 activeClients.put(socket, true);
             } catch (Exception e) {
                 Log.error("Error handling ESP32 client: " + e.getMessage());
@@ -90,14 +90,27 @@ public class Server {
             try {
                 Log.info("Application client connected: " + socket.getRemoteSocketAddress());
                 activeClients.put(socket, true);
-                try (InputStream inputStream = socket.getInputStream()) {
-                    byte[] buffer = new byte[4096];
-                    int bytesRead;
 
-                    while ((bytesRead = inputStream.read(buffer)) != -1) {
-                        byte[] audioData = new byte[bytesRead];
-                        System.arraycopy(buffer, 0, audioData, 0, bytesRead);
-                        audioDataQueue.offer(audioData);
+                try (DataInputStream dataInput = new DataInputStream(new BufferedInputStream(socket.getInputStream()))) {
+                    byte[] rawBuffer = new byte[4096];
+
+                    while (true) {
+                        try {
+                            int totalBytesRead = 0;
+                            while (totalBytesRead < rawBuffer.length) {
+                                int bytesRead = dataInput.read(rawBuffer, totalBytesRead, rawBuffer.length - totalBytesRead);
+                                if (bytesRead == -1) throw new EOFException();
+                                totalBytesRead += bytesRead;
+                            }
+
+                            short[] audioData = AudioDataConverter.bytesToShort(rawBuffer);
+
+                            Log.info("Received " + Arrays.toString(audioData));
+                            audioDataQueue.offer(audioData);
+
+                        } catch (EOFException e) {
+                            break;
+                        }
                     }
                 }
             } catch (Exception e) {
@@ -114,15 +127,17 @@ public class Server {
         }
     }
 
-
     static class DataProcessor implements Runnable {
         @Override
         public void run() {
             while (true) {
                 try {
-                    byte[] data = audioDataQueue.take();
+                    short[] shorts = audioDataQueue.take();
+//                    for (int i = 0; i < shorts.length; i++) {
+//                        shorts[i] = (short) (shorts[i] & 0xFFFF);
+//                    }
 
-                    while (!esp32Buffer.offer(data)) {
+                    while (!esp32Buffer.offer(shorts)) {
                         esp32Buffer.poll();
                     }
                 } catch (Exception e) {
@@ -138,9 +153,20 @@ public class Server {
             while (true) {
                 try {
                     if (esp32Socket != null && !esp32Socket.isClosed()) {
-                        byte[] data = esp32Buffer.take();
-                        OutputStream output = esp32Socket.getOutputStream();
-                        output.write(data);
+                        short[] shorts = esp32Buffer.take();
+                        DataOutputStream output = new DataOutputStream(esp32Socket.getOutputStream());
+
+                        // Convert shorts to bytes manually to maintain endianness
+                        byte[] bytes = new byte[shorts.length * 2];
+                        for (int i = 0; i < shorts.length; i++) {
+                            short value = shorts[i];
+                            // Write in little-endian format (LSB first)
+                            bytes[i * 2] = (byte) (value & 0xFF);
+                            bytes[i * 2 + 1] = (byte) ((value >> 8) & 0xFF);
+                        }
+
+                        output.write(bytes);
+                        Log.info("Sent " + shorts.length + " samples to ESP32");
                         output.flush();
                     } else {
                         Thread.sleep(100);
