@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Set;
 import java.util.concurrent.*;
 
 public class Server {
@@ -51,7 +50,7 @@ public class Server {
         private void handleClient(Socket socket) {
             try {
                 InputStream input = socket.getInputStream();
-                byte[] buffer = new byte[1024];
+                byte[] buffer = new byte[4096];
                 int read = input.read(buffer);
                 if (read == -1) {
                     socket.close();
@@ -92,7 +91,7 @@ public class Server {
                 Log.info("Application client connected: " + socket.getRemoteSocketAddress());
                 activeClients.put(socket, true);
                 try (InputStream inputStream = socket.getInputStream()) {
-                    byte[] buffer = new byte[1024];
+                    byte[] buffer = new byte[4096];
                     int bytesRead;
 
                     while ((bytesRead = inputStream.read(buffer)) != -1) {
