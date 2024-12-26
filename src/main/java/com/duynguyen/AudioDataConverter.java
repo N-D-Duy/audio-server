@@ -10,9 +10,8 @@ public class AudioDataConverter {
         return shorts;
     }
 
-    // Chuyển từ unsigned 16-bit sang signed 16-bit
     public static short unsignedToSigned(int unsignedValue) {
-        // Chuyển từ unsigned (0-65535) sang signed (-32768 to 32767)
+
         return (short) (unsignedValue >= 32768 ? unsignedValue - 65536 : unsignedValue);
     }
 
